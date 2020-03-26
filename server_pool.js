@@ -4,6 +4,7 @@ const express = require('express')
 
 const app = express()
 
+// Setup Worker pool with 4 threads.
 const pool = new WorkerPool('./task.js', 4)
 
 app.get('/:number', (req, res) => {

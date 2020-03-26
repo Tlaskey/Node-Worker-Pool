@@ -1,4 +1,8 @@
 'use strict'
+/***
+ * This Worker Pool is from:
+ * https://blog.insiderattack.net/deep-dive-into-worker-threads-in-node-js-e75e10546b11
+ */
 const {Worker, MessageChannel, parentPort} = require('worker_threads')
 const os = require('os')
 
@@ -10,7 +14,7 @@ const WORKER_STATUS = {
 module.exports.WorkerPool = class WorkerPool {
     constructor(script, size = os.cpus().length) {
         this.script = script
-        this.size = size
+        this.size = size // defaults to number of CPUs machine has
         this.pool = []
         this.initialize()
     }
