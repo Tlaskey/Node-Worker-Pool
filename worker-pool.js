@@ -8,9 +8,9 @@ const WORKER_STATUS = {
 }
 
 module.exports.WorkerPool = class WorkerPool {
-    constructor(script) {
+    constructor(script, size = os.cpus().length) {
         this.script = script
-        this.size = os.cpus().length
+        this.size = size
         this.pool = []
         this.initialize()
     }
